@@ -1,7 +1,7 @@
 server:
-  port: 8080
+  port: 8081
   servlet:
-    context-path: /growth
+    context-path: /
     encoding:
       charset: utf-8
       enabled: true
@@ -24,6 +24,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
     show-sql: true
       
   servlet:
@@ -35,6 +36,10 @@ spring:
     user:
       name: test
       password: 1234
+      
+  h2:
+    console:
+      enabled: true
     
 
 file:
