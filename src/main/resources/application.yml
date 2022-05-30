@@ -14,7 +14,7 @@ spring:
       
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@soldesk-gangnam.tplinkdns.com:1521:xe
+    url: jdbc:oracle:thin:@gang-soldesk-nam.tplinkdns.com:15271:xe
     username: gldj
     password: gldj
     
@@ -34,7 +34,8 @@ spring:
   security:
     user:
       name: test
-      password: 1234   
+      password: 1234
+    
 
 file:
   path: C:/WorkSpace/springbootwork-sts/upload/
