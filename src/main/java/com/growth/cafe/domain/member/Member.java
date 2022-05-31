@@ -45,5 +45,9 @@ public class Member {
 	public void createDate() {
 		this.createDate = LocalDateTime.now();
 	}
+	
+	public void create() {
+		
+	}
 
 }
