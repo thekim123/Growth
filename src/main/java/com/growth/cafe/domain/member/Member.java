@@ -45,5 +45,7 @@ public class Member {
 	public void createDate() {
 		this.createDate = LocalDateTime.now();
 	}
-
+	private void vvv() {
+		
+	}
 }
