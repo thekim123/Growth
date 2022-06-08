@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 public class ImageService {
 	
 	private final ImageRepository imageRepository;
-	private final MemberRepository memberRepository;
 	
 	@Value("${file.path}")
 	private String uploadFolder;
@@ -40,15 +39,34 @@ public class ImageService {
 		String imageFileName = uuid+"_"+imageUploadDto.getFile().getOriginalFilename();
 		
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
-		System.out.println("111111111111111111111");
 		try {
 			Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
-			System.out.println("22222222222222222222222");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		Image image = imageUploadDto.toEntity(imageFileName, principalDetails.getMember());
 		imageRepository.save(image);
+	}
+	
+	@Transactional(readOnly = true)
+	public Image detailImage(int id) {
+		return imageRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
+		});
+	}
+	
+	@Transactional
+	public void update(int id, Image requestImage) {
+		Image image = imageRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("글 찾기 실패 : 아이디를 찾을 수 없습니다."); 
+		});
+		image.setTitle(requestImage.getTitle());
+		image.setContent(requestImage.getContent());
+	}
+
+	@Transactional
+	public void delete(int id) {
+		imageRepository.deleteById(id);
 	}
 }

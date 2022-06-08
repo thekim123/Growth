@@ -6,6 +6,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -28,6 +29,12 @@ public class ImageController {
 	public String imageBoard(Model model, @PageableDefault Pageable pageable) {
 		model.addAttribute("images", imageService.showImages(pageable));
 		return "image/image";
+	}
+	
+	@GetMapping("/image/{id}")
+	public String imageDetail(@PathVariable int id, Model model) {
+		model.addAttribute("image", imageService.detailImage(id));
+		return "image/detail";
 	}
 	
 	@GetMapping("/image/upload")

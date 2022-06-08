@@ -1,25 +1,25 @@
-package com.growth.cafe.web.dto.image;
+package com.growth.cafe.web.dto.file;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.growth.cafe.domain.image.Image;
 import com.growth.cafe.domain.member.Member;
+import com.growth.cafe.domain.resource.Reference;
 
 import lombok.Data;
 
 @Data
-public class ImageUploadDto {
+public class FileUploadDto {
 	
 	private String title;
 	private MultipartFile file;
 	private String content;
 	
-	public Image toEntity(String postImageUrl, Member member) {
-		return Image.builder()
+	public Reference toEntity(String postFileUrl, Member member) {
+		return Reference.builder()
 				.title(title)
 				.content(content)
 				.member(member)
-				.postImageUrl(postImageUrl)
+				.postFileUrl(postFileUrl)
 				.build();
 	}
 
