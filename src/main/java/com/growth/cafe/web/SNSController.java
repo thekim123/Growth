@@ -1,7 +1,5 @@
 package com.growth.cafe.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -47,6 +45,4 @@ public class SNSController {
 		return "sns/SnsUpdate";
 	}
 	
-	
-
 }
