@@ -1,11 +1,15 @@
 package com.growth.cafe.web;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.growth.cafe.config.auth.PrincipalDetails;
@@ -27,13 +31,19 @@ public class ReferenceController {
 		return "file/file";
 	}
 	
+	@GetMapping("/file/{id}")
+	public String fileDetail(Model model, @PathVariable int id) {
+		model.addAttribute("file", fileService.detailFiles(id));
+		return "file/detail";
+	}
+	
 	@GetMapping("/file/upload")
 	public String upload() {
 		return "file/upload";
 	}
 	
 	@PostMapping("/file/upload")
-	public String  save(FileUploadDto fileUploadDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String  save(@Valid FileUploadDto fileUploadDto, BindingResult bindingResult,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 	
 	if(fileUploadDto.getFile().isEmpty()) {
 		throw new CustomValidationException("파일이 첨부되지 않았습니다.", null);

@@ -49,6 +49,19 @@ public class ReferenceService {
 		Reference file = fileUploadDto.toEntity(fileName, principalDetails.getMember());
 		fileRepository.save(file);
 	}
+
+	@Transactional
+	public void delete(int id) {
+		fileRepository.deleteById(id);
+	}
+
+	@Transactional(readOnly = true)
+	public Reference detailFiles(int id) {
+			
+		return fileRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
+		});
+	}
 	
 	
 }

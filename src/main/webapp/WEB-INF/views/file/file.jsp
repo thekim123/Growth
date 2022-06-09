@@ -2,11 +2,11 @@
 <%@ include file="../layout/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
-	<c:forEach var="image" items="${files.content}">
+	<c:forEach var="file" items="${files.content}">
 		<div class="card m-2">
 			<div class="card-body">
 				<h4 class="card-title">${file.title }</h4>
-				<a href="/image/${file.id }" class="btn btn-primary">상세보기</a>
+				<a href="/file/${file.id }" class="btn btn-primary">상세보기</a>
 			</div>
 		</div>
 	</c:forEach>

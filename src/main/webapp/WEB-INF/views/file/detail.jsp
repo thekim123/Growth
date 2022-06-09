@@ -3,28 +3,28 @@
 <div class="container">
 
 	<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-	<c:if test="${image.member.id==principal.member.id }">
-		<a href="/image/${image.id }/updateForm" class="btn btn-warning">수정</a>
+	<c:if test="${file.member.id==principal.member.id }">
+		<a href="/file/${file.id }/updateForm" class="btn btn-warning">수정</a>
 		<button id="btn-delete" class="btn btn-danger">삭제</button>
 	</c:if>
 	<br /> <br />
 	<div>
-		글 번호 : <span id="id"><i> ${image.id } </i></span> 작성자 : <span id="id"><i> ${image.member.username } </i></span>
+		글 번호 : <span id="id"><i> ${file.id } </i></span> 작성자 : <span id="id"><i> ${file.member.username } </i></span>
 	</div>
 	<br />
 	<div>
-		<h3>${image.title }</h3>
+		<h3>${file.title }</h3>
 	</div>
 	<hr />
 	<div>
-		<div>${image.content }</div>
+		<div>${file.content }</div>
 	</div>
 	<hr />
 
 	<div class="card">
 		<form>
 			<input type="hidden" id="memberId" value="${principal.member.id }"/>
-			<input type="hidden" id="imageId" value="${image.id }"/>
+			<input type="hidden" id="imageId" value="${file.id }"/>
 			<div class="card-body">
 				<textarea id="reply-content" class="form-control" rows="1"></textarea>
 			</div>

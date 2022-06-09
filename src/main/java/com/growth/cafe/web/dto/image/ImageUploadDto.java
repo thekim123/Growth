@@ -1,5 +1,7 @@
 package com.growth.cafe.web.dto.image;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.growth.cafe.domain.image.Image;
@@ -10,6 +12,7 @@ import lombok.Data;
 @Data
 public class ImageUploadDto {
 	
+	@NotBlank
 	private String title;
 	private MultipartFile file;
 	private String content;
