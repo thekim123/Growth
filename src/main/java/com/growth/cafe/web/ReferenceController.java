@@ -43,14 +43,31 @@ public class ReferenceController {
 	}
 	
 	@PostMapping("/file/upload")
-	public String  save(@Valid FileUploadDto fileUploadDto, BindingResult bindingResult,@AuthenticationPrincipal PrincipalDetails principalDetails) {
-	
-	if(fileUploadDto.getFile().isEmpty()) {
-		throw new CustomValidationException("파일이 첨부되지 않았습니다.", null);
+	public String save(@Valid FileUploadDto fileUploadDto, BindingResult bindingResult,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+		if (fileUploadDto.getFile().isEmpty()) {
+			throw new CustomValidationException("파일이 첨부되지 않았습니다.", null);
+		}
+		fileService.upload(fileUploadDto, principalDetails);
+		return "redirect:/file";
 	}
-	fileService.upload(fileUploadDto, principalDetails);
-	return "redirect:/file";
+	
+	@GetMapping("/file/{id}/updateForm")
+	public String update(@PathVariable int id, Model model) {
+		model.addAttribute("file", fileService.detailFiles(id));
+		return "file/update";
 	}
 	
+	@PostMapping("/file/{id}/update")
+	public String update(@PathVariable int id, @Valid FileUploadDto fileUploadDto, BindingResult bindingResult,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		
+		if (fileUploadDto.getFile().isEmpty()) {
+			throw new CustomValidationException("파일이 첨부되지 않았습니다.", null);
+		}
+		fileService.update(id, fileUploadDto, principalDetails);
+		return "redirect:/file";
+	}
 	
 }

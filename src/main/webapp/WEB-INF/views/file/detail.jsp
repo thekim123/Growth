@@ -15,6 +15,9 @@
 	<div>
 		<h3>${file.title }</h3>
 	</div>
+	<div>
+		<img src="/upload/${file.postFileUrl }">
+	</div>
 	<hr />
 	<div>
 		<div>${file.content }</div>
@@ -54,6 +57,6 @@
 	 -->
 </div>
 
-<script src="/js/image/image.js"></script>
+<script src="/js/file/file.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 
