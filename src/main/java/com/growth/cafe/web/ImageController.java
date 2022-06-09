@@ -61,4 +61,15 @@ public class ImageController {
 		return "image/update";
 	}
 	
+	@PostMapping("/image/{id}/update")
+	public String update(@PathVariable int id, @Valid ImageUploadDto imageUploadDto, BindingResult bindingResult,@AuthenticationPrincipal PrincipalDetails principalDetails){
+		
+		if(imageUploadDto.getFile().isEmpty()) {
+			throw new CustomValidationException("이미지가 첨부되지 않았습니다.", null);
+		}
+		imageService.update(id, imageUploadDto, principalDetails);
+		return "redirect:/image";
+	}
+
+	
 }

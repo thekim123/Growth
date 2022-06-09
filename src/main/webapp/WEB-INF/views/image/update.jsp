@@ -16,6 +16,8 @@
 		<!--사진업로드 로고 end-->
 
 		<!--사진업로드 Form-->
+		<form class="upload-form" action="/image/${image.id }/update" method="post" enctype="multipart/form-data">
+		
 			<input type="hidden" id="id" value="${image.id }"/>
 			<div class="upload-form-detail">
 				<input type="text" placeholder="제목" name="title" value="${image.title }" />

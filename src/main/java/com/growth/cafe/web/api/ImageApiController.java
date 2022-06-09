@@ -27,12 +27,6 @@ public class ImageApiController {
 
 	private final ImageService imageService;
 	
-	@PutMapping("/api/image/{id}")
-	public ResponseDto<Integer> update(@PathVariable int id, @RequestPart ImageUploadDto imageUploadDto){
-		imageService.update(id, imageUploadDto);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}
-	
 	@DeleteMapping("/api/image/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id){
 		imageService.delete(id);

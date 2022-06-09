@@ -1,6 +1,7 @@
 package com.growth.cafe.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -69,7 +70,7 @@ public class ImageService {
 	}
 	
 	@Transactional
-	public void update(int id, ImageUploadDto imageUploadDto) {
+	public void update(int id, ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
 		String imageFileName = generateFileName(imageUploadDto);
 		Path imageFilePath = generateFilePath(imageFileName);
 		
@@ -82,6 +83,13 @@ public class ImageService {
 		Image image = imageRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("글 찾기 실패 : 아이디를 찾을 수 없습니다."); 
 		});
+		
+		try {
+			Files.delete(generateFilePath(image.getPostImageUrl()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		image.setTitle(imageUploadDto.getTitle());
 		image.setContent(imageUploadDto.getContent());
 		image.setPostImageUrl(imageFileName);
@@ -89,6 +97,14 @@ public class ImageService {
 
 	@Transactional
 	public void delete(int id) {
+		Image image = imageRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
+		});
+		try {
+			Files.delete(generateFilePath(image.getPostImageUrl()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		imageRepository.deleteById(id);
 	}
 }
