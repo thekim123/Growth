@@ -1,3 +1,4 @@
+
 let index = {
 		init: function(){
 			$("#btn-delete").on("click",  ()=>{
@@ -31,10 +32,12 @@ let index = {
 		
 		update: function(){
 			let id = $("#id").val();
+			let formData = new FormData();
 			
 			let data = {
 					title: $("#title").val(),
 					content: $("#content").val()
+					
 			};
 			
 			$.ajax({ 

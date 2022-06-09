@@ -55,4 +55,10 @@ public class ImageController {
 		return "redirect:/image";
 	}
 	
+	@GetMapping("/image/{id}/updateForm")
+	public String update(@PathVariable int id, Model model) {
+		model.addAttribute("image", imageService.detailImage(id));
+		return "image/update";
+	}
+	
 }

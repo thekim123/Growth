@@ -17,6 +17,10 @@
 	</div>
 	<hr />
 	<div>
+		<img src="/upload/${image.postImageUrl }"/>
+	</div>
+	<hr />
+	<div>
 		<div>${image.content }</div>
 	</div>
 	<hr />

@@ -1,5 +1,6 @@
 package com.growth.cafe.service;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,12 +34,30 @@ public class ImageService {
 		return imageRepository.findAll(pageable);
 	}
 	
-	@Transactional
-	public void upload(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
+	@Transactional(readOnly = true)
+	public Image detailImage(int id) {
+		return imageRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
+		});
+	}
+	
+	public String generateFileName(ImageUploadDto imageUploadDto) {
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid+"_"+imageUploadDto.getFile().getOriginalFilename();
-		
+		return imageFileName;
+	}
+	
+	public Path generateFilePath(String imageFileName) {
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
+		return imageFilePath;
+	}
+	
+	@Transactional
+	public void upload(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
+		
+		//Dto 만들면 좋을듯
+		String imageFileName = generateFileName(imageUploadDto);
+		Path imageFilePath = generateFilePath(imageFileName);
 		try {
 			Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
 		} catch (Exception e) {
@@ -49,20 +68,23 @@ public class ImageService {
 		imageRepository.save(image);
 	}
 	
-	@Transactional(readOnly = true)
-	public Image detailImage(int id) {
-		return imageRepository.findById(id).orElseThrow(()->{
-			return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
-		});
-	}
-	
 	@Transactional
-	public void update(int id, Image requestImage) {
+	public void update(int id, ImageUploadDto imageUploadDto) {
+		String imageFileName = generateFileName(imageUploadDto);
+		Path imageFilePath = generateFilePath(imageFileName);
+		
+		try {
+			Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		Image image = imageRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("글 찾기 실패 : 아이디를 찾을 수 없습니다."); 
 		});
-		image.setTitle(requestImage.getTitle());
-		image.setContent(requestImage.getContent());
+		image.setTitle(imageUploadDto.getTitle());
+		image.setContent(imageUploadDto.getContent());
+		image.setPostImageUrl(imageFileName);
 	}
 
 	@Transactional

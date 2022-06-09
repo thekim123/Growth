@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.growth.cafe.config.auth.PrincipalDetails;
@@ -16,6 +17,7 @@ import com.growth.cafe.domain.image.Image;
 import com.growth.cafe.service.ImageService;
 import com.growth.cafe.web.dto.CMRespDto;
 import com.growth.cafe.web.dto.ResponseDto;
+import com.growth.cafe.web.dto.image.ImageUploadDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,8 +28,8 @@ public class ImageApiController {
 	private final ImageService imageService;
 	
 	@PutMapping("/api/image/{id}")
-	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Image image){
-		imageService.update(id, image);
+	public ResponseDto<Integer> update(@PathVariable int id, @RequestPart ImageUploadDto imageUploadDto){
+		imageService.update(id, imageUploadDto);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
