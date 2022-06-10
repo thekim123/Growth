@@ -40,7 +40,17 @@ spring:
       enabled: true
       
   servlet:    multipart:      enabled: true
-      max-file-size: 2MB        
+      max-file-size: 2MB  
+  security:    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 388663633306432
+            client-secret: f0734b9f497d6d1728a7c8f56846f30c
+            scope:
+            - public_profile
+            - email
+  
 file:
   path: C:/WorkSpace/springbootwork/upload/
     

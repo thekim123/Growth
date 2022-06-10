@@ -1,27 +1,41 @@
 
 let index = {
 		init: function(){
-			$("#btn-delete").on("click",  ()=>{
-					this.deleteById();
+			$("#btn-reply-save").on("click",  ()=>{
+				this.replySave();
 			}); 
 		},
-
-
-		deleteById: function(){
-			let id = $("#id").text();
-			
+		
+		replySave: function(){
+			let data = {
+					fileId : $("#fileId").val(),
+					content: $("#reply-content").val()
+			}
 			$.ajax({ 
-				type: "DELETE",
-				url: "/api/refer/"+id,
-				dataType: "json"
+				type: "POST",
+				url: `/api/file/reply/`,
+				data: JSON.stringify(data),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
 			}).done(function(resp){
-				alert("삭제가 완료되었습니다.");
-				location.href = "/image";
+				alert("댓글작성이 완료되었습니다.");
+				location.href = `/image/${data.imageId}`;
 			}).fail(function(error){
-				alert("삭제가 실패하였습니다.");
 				alert(JSON.stringify(error));
 			}); 
-		},
+		}
+}
+function replyDelete(fileId, replyId){
+	$.ajax({ 
+		type: "DELETE",
+		url: `/api/file/reply/${replyId}`,
+		dataType: "json"
+	}).done(resp=>{
+		alert("댓글삭제가 완료되었습니다.");
+		location.href = `/file/${fileId}`;
+	}).fail(error=>{
+		alert(JSON.stringify(error));
+	}); 
 }
 
 index.init();

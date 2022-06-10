@@ -8,9 +8,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
+import com.growth.cafe.config.oauth.OAuth2DetailsService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	private final OAuth2DetailsService oAuth2DetailsService;
 	
 	@Bean
 	public BCryptPasswordEncoder encode() {
@@ -28,7 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.formLogin()
 			.loginPage("/auth/signin")
 			.loginProcessingUrl("/auth/signin") 
-			.defaultSuccessUrl("/");
+			.defaultSuccessUrl("/")
+			.and()
+			.oauth2Login()
+			.userInfoEndpoint()
+			.userService(oAuth2DetailsService);
 	}
 	
 }

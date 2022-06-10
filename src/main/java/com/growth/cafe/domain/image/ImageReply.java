@@ -1,7 +1,6 @@
-package com.growth.cafe.domain.resource;
+package com.growth.cafe.domain.image;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,47 +10,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.PrePersist;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+
 import com.growth.cafe.domain.member.Member;
+import com.growth.cafe.domain.sns.Sns;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Builder
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
-public class Reference {
+@NoArgsConstructor
+@Data
+public class ImageReply {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
-	@Column(nullable = false)
-	private String title;
+	@Column(nullable = false, length = 200)
 	private String content;
-	private String postFileUrl;
+	
+	@JoinColumn(name = "imageId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Image image;
 	
 	@JoinColumn(name="memberId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Member member;
 	
-	@OrderBy("id DESC")
-	@JsonIgnoreProperties("{file}")
-	@OneToMany(mappedBy = "file")
-	private List<FileReply> replies;
+	@CreationTimestamp
+	private Timestamp createDate;
 	
-	private LocalDateTime createDate;
-	
-	@PrePersist
-	public void createDate() {
-		this.createDate = LocalDateTime.now();
-	}
 }

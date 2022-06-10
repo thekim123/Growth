@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,6 +46,11 @@ public class Image {
 	@JoinColumn(name = "memberId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Member member;
+	
+	@OrderBy("id DESC")
+	@JsonIgnoreProperties("{image}")
+	@OneToMany(mappedBy = "image")
+	private List<ImageReply> replies;
 	
 	private LocalDateTime createDate;
 	
