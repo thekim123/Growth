@@ -29,7 +29,7 @@ public class ImageController {
 	private final ImageService imageService;
 	
 	@GetMapping("/image")
-	public String imageBoard(Model model, @PageableDefault Pageable pageable) {
+	public String imageBoard(Model model, @PageableDefault(size = 5) Pageable pageable) {
 		model.addAttribute("images", imageService.showImages(pageable));
 		return "image/image";
 	}

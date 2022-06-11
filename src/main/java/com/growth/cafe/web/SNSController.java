@@ -18,9 +18,8 @@ public class SNSController {
 	
 
 	@GetMapping({"/", "/sns/story"})
-	public String story(Model model, @PageableDefault(size=3, sort = "id") Pageable p) {
-		model.addAttribute("snsList", ss.SnsSelect(p));
-		return "/sns/story";
+	public String story() {
+		return "sns/story";
 	}
 	
 	@GetMapping("/snswrite")

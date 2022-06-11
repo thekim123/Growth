@@ -26,7 +26,7 @@ public class ReferenceController {
 	private final ReferenceService fileService;
 	
 	@GetMapping("/file")
-	public String fileBoard(Model model, @PageableDefault Pageable pageable) {
+	public String fileBoard(Model model, @PageableDefault(size = 5) Pageable pageable) {
 		model.addAttribute("files", fileService.showFiles(pageable));
 		return "file/file";
 	}

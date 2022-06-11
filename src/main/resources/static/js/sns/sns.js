@@ -79,12 +79,6 @@ let init = {
 			alert(JSON.stringify(error));
 		});
 	},
-
-
-
-
-
-
 }
 
 init.btn();

@@ -30,7 +30,6 @@ public class SnsService {
 	
 	@Transactional(readOnly = true)
 	public Page<Sns> SnsSelect(Pageable p) {
-		
 		return sr.findAll(p);
 	}
 	

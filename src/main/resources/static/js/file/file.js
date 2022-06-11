@@ -17,11 +17,11 @@ let index = {
 				data: JSON.stringify(data),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
-			}).done(function(resp){
+			}).done(resp=>{
 				alert("댓글작성이 완료되었습니다.");
-				location.href = `/image/${data.imageId}`;
-			}).fail(function(error){
-				alert(JSON.stringify(error));
+				location.href = `/file/${data.fileId}`;
+			}).fail(error=>{
+				alert(error.responseJSON.data.content);
 			}); 
 		}
 }
@@ -34,7 +34,7 @@ function replyDelete(fileId, replyId){
 		alert("댓글삭제가 완료되었습니다.");
 		location.href = `/file/${fileId}`;
 	}).fail(error=>{
-		alert(JSON.stringify(error));
+		console.log("오류",error);
 	}); 
 }
 
