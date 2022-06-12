@@ -23,3 +23,38 @@ function update(memberId, event) {
 		}
 	});
 }
+
+// (2) 유저 프로필 사진 변경
+function profileImageUpdate(principalId){
+	$("#memberProfileImageInput").click();
+	
+	$("#memberProfileImageInput").on("change", (e)=>{
+		let f = e.target.files[0];
+		
+		if(!f.type.match("image.*")){
+			alert("이미지를 등록해야 합니다.");
+			return;
+		}
+	
+		let profileImageForm = $("#memberProfileImageForm")[0];
+		let formData = new FormData(profileImageForm);
+		$.ajax({
+			type: "put",
+			url: `/api/member/${principalId}/profileImageUrl`,
+			data: formData,
+			contentType: false,
+			processData: false,
+			encType: "multipart/form-data",
+			dataType: "json"
+		}).done(res=>{
+			let reader = new FileReader();
+			reader.onload = (e) => {
+				$("#memberProfileImage").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		}).fail(error=>{
+			console.log("오류", error);
+		});
+	});
+	
+}

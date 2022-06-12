@@ -42,7 +42,6 @@
 			</c:when>
 			<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/snswrite">글쓰기</a></li>
 						<li class="nav-item"><a class="nav-link" href="/image">이미지</a></li>
 						<li class="nav-item"><a class="nav-link" href="/file">파일</a></li>
 						<li class="nav-item"><a class="nav-link" href="/member/update">회원정보</a></li>

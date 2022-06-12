@@ -10,11 +10,18 @@
 		<!--프로필셋팅 아티클-->
 		<article class="setting__content">
 
-			<!--프로필셋팅 아이디영역-->
 			<div class="content-item__01">
+			<!--프로필셋팅 프로필 사진영역-->
 				<div class="item__img">
-					<img src="#" onerror="this.src='/images/person.jpeg'" />
+					<form id="memberProfileImageForm">
+						<input type="file" name="profileImageFile" style="display: none;" id="memberProfileImageInput">
+					</form>
+						<img id="memberProfileImage" class="profile-image" 
+								src="/upload/${principal.member.profileImageUrl }" 
+								onerror="this.src='/images/person.jpeg'" 
+								onclick="profileImageUpdate(${principal.member.id})"/>
 				</div>
+			<!--프로필셋팅 아이디영역-->
 				<div class="item__username">
 					<h2>${principal.member.username }</h2>
 				</div>
