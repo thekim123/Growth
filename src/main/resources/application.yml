@@ -5,6 +5,7 @@ server:
     encoding:
       charset: utf-8
       enabled: true
+      force: true
     
 spring:
   mvc:
@@ -30,18 +31,20 @@ spring:
   servlet:
     multipart:
       enabled: true
-      max-file-size: 2000MB
+      max-file-size: 20MB
+      max-request-size: -1
+      location: D:/Soldesk/Video
 
   security:
     user:
       name: test
       password: 1234
-      
-  h2:
-    console:
-      enabled: true
     
-
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      
 file:
-  path: C:/WorkSpace/springbootwork-sts/upload/
+  path: C:/Temp
+  pathvideo: D:/Soldesk/Video
 
