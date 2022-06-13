@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.growth.cafe.config.auth.PrincipalDetails;
 import com.growth.cafe.domain.reply.Reply;
 import com.growth.cafe.service.ReplyService;
+import com.growth.cafe.web.dto.ReplySaveRequestDto;
 import com.growth.cafe.web.dto.ResponseDto;
 
 @RestController
@@ -22,12 +23,11 @@ public class ReplyApiController {
 	private ReplyService rs;
 
 	@PostMapping("/api/replyWrite")
-	public ResponseDto<Integer> replyWrite(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails){
+	public ResponseDto<Integer> replyWrite(@RequestBody ReplySaveRequestDto rDto){
 		System.out.println("성공");
-		Reply r = new Reply();
-		r.getContent();
-		r.getMemberId();
-		rs.replyWrite(r);
+		
+		
+		rs.replyWrite(rDto);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	

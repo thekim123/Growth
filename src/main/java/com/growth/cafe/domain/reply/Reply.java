@@ -16,6 +16,8 @@ import org.hibernate.annotations.DynamicInsert;
 
 import com.growth.cafe.domain.member.Member;
 import com.growth.cafe.domain.sns.Sns;
+import com.kim.blog.model.UserPeter;
+import com.kim.blog.model.board;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,6 +50,12 @@ public class Reply {
 	@CreationTimestamp
 	private Timestamp createDate;
 
+	public void update(Member member, Sns sns, String content) {
+		setMemberId(member);
+		setSnsId(sns);
+		setContent(content);
+		
+	}
 	
 	
 	

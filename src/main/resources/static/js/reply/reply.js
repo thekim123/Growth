@@ -3,7 +3,10 @@ let reply = {
 		$("#btn-reply-write").click(function(){
 			reply.write();
 		});
+		
+		
 	},
+
 	write:function(){
 		let data = {
 			content: $("#content").val(),
