@@ -35,6 +35,7 @@ function replyDelete(fileId, replyId){
 		location.href = `/file/${fileId}`;
 	}).fail(error=>{
 		console.log("오류",error);
+		alert(error.responseJSON.data.content);
 	}); 
 }
 

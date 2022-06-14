@@ -6,12 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.growth.cafe.config.auth.PrincipalDetails;
@@ -64,5 +63,10 @@ public class MemberService {
 		memberEntity.setProfileImageUrl(imageFileName);
 		principalDetails.getMember().setProfileImageUrl(imageFileName);
 		return memberEntity;
+	}
+
+	@Transactional(readOnly = true)
+	public boolean checkUsernameDuplicate(String username) {
+		return memberRepository.existsByUsername(username);
 	}
 }
