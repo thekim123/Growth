@@ -1,4 +1,4 @@
-package com.growth.cafe.web;
+package com.growth.cafe.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

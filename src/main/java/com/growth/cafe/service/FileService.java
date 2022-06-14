@@ -24,14 +24,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import com.growth.cafe.controller.api.FileApiController;
-import com.growth.cafe.model.FileInfo;
+import com.growth.cafe.domain.video.FileInfo;
+import com.growth.cafe.web.api.FileApiController;
 
 @Service
 public class FileService {
 
 //	@Value("${spring.servlet.multipart.location}") // multipart에 location으로 설정한 폴더
-	@Value("${file.pathvideo}") // -> yml파일에 file/path:로 설정한 폴더
+	@Value("${file.path}") // -> yml파일에 file/path:로 설정한 폴더
 	private String filePath;
 
 	private Path getFileName(String filename) {

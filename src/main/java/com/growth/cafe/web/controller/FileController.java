@@ -1,4 +1,4 @@
-package com.growth.cafe.controller;
+package com.growth.cafe.web.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

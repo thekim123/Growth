@@ -8,8 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-
 <!-- Style -->
 
 <title>SOLDESK CAFE</title>

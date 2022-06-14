@@ -62,6 +62,5 @@
 		</div>
 	</div>
 </div>
-r
 
 <%@ include file="../layout/footer.jsp"%>

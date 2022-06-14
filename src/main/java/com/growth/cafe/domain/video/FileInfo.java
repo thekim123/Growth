@@ -1,4 +1,4 @@
-package com.growth.cafe.model;
+package com.growth.cafe.domain.video;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

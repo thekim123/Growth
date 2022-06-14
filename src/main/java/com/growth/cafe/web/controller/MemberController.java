@@ -1,4 +1,4 @@
-package com.growth.cafe.web;
+package com.growth.cafe.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

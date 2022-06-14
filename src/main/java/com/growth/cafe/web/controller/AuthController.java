@@ -1,4 +1,4 @@
-package com.growth.cafe.web;
+package com.growth.cafe.web.controller;
 
 import java.util.HashMap;
 import java.util.Map;
