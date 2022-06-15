@@ -18,7 +18,7 @@ public class FileController {
 	@Autowired
 	private FileService fileService;
 
-	@GetMapping("/file/list")
+	@GetMapping("/video/list")
 	public String getListFiles(Model model, @PageableDefault(size=10) Pageable pageable) {
 		model.addAttribute("filelist", fileService.toPage(pageable));
 		return "video/filelist";

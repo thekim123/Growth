@@ -1,9 +1,28 @@
 
 let index = {
 		init: function(){
+			$("#btn-delete").on("click", ()=>{
+				this.deleteById();
+			});
 			$("#btn-reply-save").on("click",  ()=>{
 				this.replySave();
 			}); 
+		},
+		
+		deleteById: function(){
+			let id = $("#fileId").text();
+			
+			$.ajax({
+				type: "delete",
+				url: "/api/file/"+id,
+				dataType: "json"
+			}).done(res=>{
+				alert("삭제가 완료되었습니다.");
+				location.href="/file";
+			}).fail(error=>{
+				alert("삭제가 실패하였습니다.");
+				console.log(error);
+			});
 		},
 		
 		replySave: function(){

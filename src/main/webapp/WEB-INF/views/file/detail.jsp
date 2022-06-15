@@ -8,8 +8,10 @@
 		<button id="btn-delete" class="btn btn-danger">삭제</button>
 	</c:if>
 	<br /> <br />
-	<div>
-		글 번호 : <span id="id"><i> ${file.id } </i></span> 작성자 : <span id="id"><i> ${file.member.username } </i></span>
+	<div class="item__img">
+		<span id="fileId" style="display: none;"><i> ${file.id } </i></span>
+		<span id="memberProfileImage">	<img class="profile-image"  src="/upload/${principal.member.profileImageUrl}" onerror="this.src='/images/person.jpeg'" /></span>
+		<span id="username"><i> ${file.member.username } </i></span>
 	</div>
 	<br />
 	<div>

@@ -16,7 +16,7 @@ public class ReferenceApiController {
 	
 	private final ReferenceService fileService;
 	
-	@DeleteMapping("/api/refer/{id}")
+	@DeleteMapping("/api/file/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id){
 		fileService.delete(id);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
