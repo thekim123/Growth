@@ -20,19 +20,22 @@
 			<div class="upload-form-detail">
 				<input type="text" placeholder="제목" name="title" />
 			</div>
-			
+
+
+			<!--사진설명-->
+			<div class="upload-form-detail">
+				<textarea name="content" class="form-control" rows="5"  placeholder="사진설명" ></textarea>
+			</div>
+			<!--사진설명end-->
+
+			<!-- 사진 업로드 인풋 -->
 			<input type="file" name="file" onchange="imageChoose(this)" />
 			<div class="upload-img">
 				<img src="/images/person.jpeg" alt="" id="imageUploadPreview" />
 			</div>
-
-			<!--사진설명 + 업로드버튼-->
-			<div class="upload-form-detail">
-				<input type="text" placeholder="사진설명" name="content" />
-				<button class="cta blue">업로드</button>
-			</div>
-			<!--사진설명end-->
-
+			<!-- 사진 업로드 인풋 end-->
+	
+			<button class="btn btn-primary">업로드</button>
 		</form>
 		<!--사진업로드 Form-->
 	</section>

@@ -17,24 +17,26 @@
 
 		<!--사진업로드 Form-->
 		<form class="upload-form" action="/image/${image.id }/update" method="post" enctype="multipart/form-data">
-		
-			<input type="hidden" id="id" value="${image.id }"/>
+
+			<input type="hidden" id="id" value="${image.id }" />
 			<div class="upload-form-detail">
 				<input type="text" placeholder="제목" name="title" value="${image.title }" />
-			</div>
-			
-			<input type="file" name="file" onchange="imageChoose(this)" />
-			<div class="upload-img">
-				<img src="/upload/${image.postImageUrl }" id="imageUploadPreview" />
 			</div>
 
 			<!--사진설명 + 업로드버튼-->
 			<div class="upload-form-detail">
-				<input type="text" placeholder="사진설명" name="content" value="${image.content }"/>
-				<button class="cta blue" id="btn-update">수정</button>
+				<textarea rows="5" class="form-control" name="content" value="${image.content }" ></textarea>
 			</div>
 			<!--사진설명end-->
+			
+			<!-- 사진 업로드 인풋 -->
+			<input type="file" name="file" onchange="imageChoose(this)" />
+			<div class="upload-img">
+				<img src="/upload/${image.postImageUrl }" id="imageUploadPreview" />
+			</div>
+			<!-- 사진 업로드 인풋 end-->
 
+			<button class="btn btn-primary" id="btn-update">수정</button>
 		</form>
 		<!--사진업로드 Form-->
 	</section>

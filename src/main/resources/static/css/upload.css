@@ -1,5 +1,3 @@
-@import "header.css";
-@import "footer.css";
 
 /*업로드페이지 중앙배치*/
 .uploadContainer{
@@ -7,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 
 /*업로드섹션*/
@@ -90,8 +88,8 @@
 
 /*이미지에 대한 설명인풋 + 버튼*/
 .upload .upload-form .upload-form-detail input,
-.upload .upload-form .upload-form-detail button {
-  width: 340px;
+.upload .upload-form .upload-form-detail textarea {
+  width: 500px;
 }
 .upload .upload-form .upload-form-detail input {
   text-indent: 10px;

@@ -23,7 +23,7 @@
 			
 			<input type="file" name="file" onchange="imageChoose(this)" />
 			<div class="upload-img">
-				<img src="/upload/${file.postFileUrl }" alt="" id="imageUploadPreview" />
+				<span id="fileUploadPreview"><i> ${file.postFileUrl }"</i></span>
 			</div>
 
 			<!--파일설명 + 업로드버튼-->
