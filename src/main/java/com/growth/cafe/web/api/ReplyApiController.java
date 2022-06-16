@@ -23,6 +23,7 @@ import com.growth.cafe.service.FileReplyService;
 import com.growth.cafe.service.ImageReplyService;
 import com.growth.cafe.service.ReplyService;
 import com.growth.cafe.web.dto.CMRespDto;
+import com.growth.cafe.web.dto.ReplySaveRequestDto;
 import com.growth.cafe.web.dto.ResponseDto;
 import com.growth.cafe.web.dto.reply.ImageReplyDto;
 import com.growth.cafe.web.dto.reply.fileReplyDto;
@@ -37,15 +38,18 @@ public class ReplyApiController {
 	private final ImageReplyService imageReplyService;
 	private final FileReplyService fileReplyService;
 
-	@PostMapping("/api/replyWrite")
-	public ResponseDto<Integer> replyWrite(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails){
-		System.out.println("성공");
-		Reply r = new Reply();
-		r.getContent();
-		r.getMemberId();
-		rs.replyWrite(r);
+	@PostMapping("/api/replyWrite/{id}")
+	public ResponseDto<Integer> replyWrite(@RequestBody ReplySaveRequestDto reply){
+		rs.replyWrite(reply);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+	@DeleteMapping("/api/replyDelete/{id}")
+	public ResponseDto<Integer> replyWrite(@PathVariable int id){
+		rs.replyDelete(id);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	
 	
 	@PostMapping("/api/img/reply")
 	public ResponseEntity<?>imageReplyWrite(@Valid @RequestBody ImageReplyDto replyDto, 

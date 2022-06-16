@@ -14,8 +14,10 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.growth.cafe.domain.member.Member;
 import com.growth.cafe.domain.sns.Sns;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,15 +39,22 @@ public class Reply {
 	
 	@JoinColumn(name = "snsId")
 	@ManyToOne
-	private Sns snsId;
+	private Sns sns;
 	
 	// 바꿔야함------------
 	@JoinColumn(name="memberId")
 	@ManyToOne(fetch = FetchType.EAGER)
+	
 	private Member memberId;
 	// --------------------
 	
 	@CreationTimestamp
 	private Timestamp createDate;
 	
+	public void update(Member m, Sns s, String content) {
+		setMemberId(m);
+		setSns(s);
+		setContent(content);
+		
+	}
 }

@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -22,11 +23,11 @@ import com.growth.cafe.domain.member.Member;
 import com.growth.cafe.domain.reply.Reply;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
-@Builder
+@DynamicInsert
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,8 +50,9 @@ public class Sns {
 	@CreationTimestamp
 	public Timestamp createTime;
 	
-	@JsonIgnoreProperties({"snsId"})
-	@OneToMany(mappedBy = "snsId", fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"sns"})
+	@OrderBy("id desc")
+	@OneToMany(mappedBy = "sns", fetch = FetchType.EAGER)
 	public List<Reply> replys;
 
 	/////////////////////////////////////////////////////////////////
