@@ -24,7 +24,7 @@ public class FileApiController {
 	private FileService fileService;
 
 //	http://localhost:8081/download/0107DB.png
-	@GetMapping("/file/{filename:.+}")
+	@GetMapping("/video/{filename:.+}")
 	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
 
 		Resource file = fileService.getResource(fileService.decodeFile(filename));

@@ -53,6 +53,7 @@ function profileImageUpdate(principalId){
 			}
 			reader.readAsDataURL(f);
 		}).fail(error=>{
+			alert(error.responseJSON.data.content);
 			console.log("오류", error);
 		});
 	});

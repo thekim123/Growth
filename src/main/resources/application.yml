@@ -7,7 +7,6 @@ server:
       enabled: true
       force: true
 
-    
 spring:
   mvc:
     view:
@@ -23,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -45,13 +44,12 @@ spring:
       client:
         registration:
           facebook:
-            client-id: 388663633306432
-            client-secret: f0734b9f497d6d1728a7c8f56846f30c
+            client-id: 342057774727836
+            client-secret: 9fc2cb23d76609e93074e3db1fc1ecb8
             scope:
             - public_profile
             - email
   
 file:
-  path: C:/upload/
-  videoPath: C:/upload/video
-
+  path: C:/WorkSpace/springbootwork/upload/
+  pathvideo: C:/WorkSpace/springbootwork/upload/video

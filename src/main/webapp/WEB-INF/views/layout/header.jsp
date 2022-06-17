@@ -23,7 +23,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet" href="/css/update.css">
 <link rel="stylesheet" href="/css/upload.css">
-<link rel="stylesheet" href="/css/facebook.css">
+<link rel="stylesheet" href="/css/signin.css">
+<link rel="stylesheet" href="/css/detail.css">
 </head>
 <body>
 
@@ -45,7 +46,7 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="/image">이미지</a></li>
 						<li class="nav-item"><a class="nav-link" href="/file">파일</a></li>
-						<li class="nav-item"><a class="nav-link" href="/file/list">비디오</a></li>
+						<li class="nav-item"><a class="nav-link" href="/video/list">비디오</a></li>
 						<li class="nav-item"><a class="nav-link" href="/member/update">회원정보</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
 					</ul>

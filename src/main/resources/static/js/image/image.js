@@ -1,9 +1,29 @@
 
 let index = {
 		init: function(){
+			$("#btn-delete").on("click", ()=>{
+				this.deleteById();
+			});
 			$("#btn-reply-save").on("click",  ()=>{
 				this.replySave();
-			}); 
+			});
+		},
+		
+		//게시글 삭제
+		deleteById: function(){
+			let id = $("#imageId").text();
+			
+			$.ajax({
+				type: "delete",
+				url: "/api/image/"+id,
+				dataType: "json"
+			}).done(res=>{
+				alert("삭제가 완료되었습니다.");
+				location.href="/image";
+			}).fail(error=>{
+				alert("삭제가 실패하였습니다.");
+				console.log(JSON.stringify(error));
+			});
 		},
 		
 		replySave: function(){
@@ -26,7 +46,8 @@ let index = {
 			}); 
 		}
 }
-	
+
+// 댓글 삭제
 function replyDelete(imageId, replyId){
 			$.ajax({ 
 				type: "DELETE",

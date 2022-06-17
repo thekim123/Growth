@@ -14,8 +14,15 @@ button {
 }
 
 .login-button-area{
-	padding: 0 300px;
+	width: 100%;
+	padding: 0 45%;
 	margin-top: 15px;
+}
+.login-button-area button{
+	align-items:center;
+	width: 100px;
+	height: 30px;
+	border: 0;
 }
 /* 페이스북로그인 영역 */
 .login__facebook {

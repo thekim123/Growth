@@ -8,26 +8,27 @@
 		<button id="btn-delete" class="btn btn-danger">삭제</button>
 	</c:if>
 	<br /> <br />
-	<div>
-		글 번호 : <span id="id"><i> ${file.id } </i></span> 작성자 : <span id="id"><i> ${file.member.username } </i></span>
+	<div class="item__img">
+		<span id="fileId" style="display: none;"><i> ${file.id } </i></span> <span id="memberProfileImage"> <img class="profile-image" src="/upload/${principal.member.profileImageUrl}"
+			onerror="this.src='/images/person.jpeg'" /></span> <span id="username"><i> ${file.member.username } </i></span>
 	</div>
 	<br />
 	<div>
 		<h3>${file.title }</h3>
-	</div>
-	<div>
-		<img src="/upload/${file.postFileUrl }">
 	</div>
 	<hr />
 	<div>
 		<div>${file.content }</div>
 	</div>
 	<hr />
+	<div>
+		<span id="fileUploadPreview"><i> <a href="/upload/${file.postFileUrl }"">${file.postFileUrl }</a></i></span>
+	</div>
+	<hr />
 
 	<div class="card">
 		<form>
-			<input type="hidden" id="memberId" value="${principal.member.id }"/>
-			<input type="hidden" id="fileId" value="${file.id }"/>
+			<input type="hidden" id="memberId" value="${principal.member.id }" /> <input type="hidden" id="fileId" value="${file.id }" />
 			<div class="card-body">
 				<textarea id="reply-content" class="form-control" rows="1"></textarea>
 			</div>
@@ -37,12 +38,12 @@
 		</form>
 	</div>
 	<br />
-	
+
 	<div class="card">
 		<div class="card-header">댓글 리스트</div>
 		<ul id="reply-box" class="list-group">
 			<c:forEach var="reply" items="${file.replies }">
-			
+
 				<li id="reply-${reply.id }" class="list-group-item d-flex justify-content-between">
 					<div>${reply.content }</div>
 					<div class="d-flex">
@@ -54,7 +55,6 @@
 		</ul>
 	</div>
 </div>
-
 <script src="/js/file/file.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 
