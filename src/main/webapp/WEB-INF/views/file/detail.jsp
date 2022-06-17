@@ -22,7 +22,7 @@
 	</div>
 	<hr />
 	<div>
-		<span id="fileUploadPreview"><i> ${file.postFileUrl }"</i></span>
+		<span id="fileUploadPreview"><i> <a href="/upload/${file.postFileUrl }"">${file.postFileUrl }</a></i></span>
 	</div>
 	<hr />
 
