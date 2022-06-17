@@ -25,7 +25,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
-	@Column(length = 20, unique = true, nullable = false)
+	@Column(length = 100, unique = true, nullable = false)
 	private String username;
 	@Column(nullable = false, length = 100)
 	private String password;
