@@ -52,4 +52,4 @@ spring:
   
 file:
   path: C:/WorkSpace/springbootwork/upload/
-  pathvideo: C:/WorkSpace/springbootwork/upload/video
+  videoPath: C:/WorkSpace/springbootwork/upload/video
