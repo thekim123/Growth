@@ -1,6 +1,7 @@
 let reply = {
 	btn: function(){
 		$("#btn-reply-write").click(function(){
+			alert("abc");
 			reply.write();
 		});
 	},

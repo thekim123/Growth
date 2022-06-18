@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.growth.cafe.domain.member.Member;
 import com.growth.cafe.domain.sns.Sns;
 
@@ -36,13 +37,13 @@ public class Reply {
 	private String content;
 	
 	@JoinColumn(name = "snsId")
-	@ManyToOne
-	private Sns snsId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Sns sns;
 	
 	// 바꿔야함------------
 	@JoinColumn(name="memberId")
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Member memberId;
+	private Member member;
 	// --------------------
 	
 	@CreationTimestamp

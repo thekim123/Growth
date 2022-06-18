@@ -20,22 +20,23 @@ import com.growth.cafe.domain.sns.SnsRepository;
 @Service
 public class SnsService {
 	@Autowired
-	private SnsRepository sr;
+	private SnsRepository snsRepository;
 	
 	@Transactional
 	public void SnsWrite(Sns s, Member member) {
 		s.setMember(member);
-		sr.save(s);
+		snsRepository.save(s);
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<Sns> SnsSelect(Pageable p) {
-		return sr.findAll(p);
+	public Page<Sns> SnsSelect(Pageable pageable) {
+		Page<Sns> snses = snsRepository.findAll(pageable);
+		return snses;
 	}
 	
 	@Transactional(readOnly = true)
 	public Sns SnsDetail(int id) {
-		return sr.findById(id).orElseThrow(()->{
+		return snsRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("글상세보기 실패 : 아이디를 찾을수 없습니다");
 		});
 		
@@ -43,11 +44,11 @@ public class SnsService {
 	@Transactional
 	public void SnsDelete(int id) {
 		
-		sr.deleteById(id);
+		snsRepository.deleteById(id);
 	}
 	@Transactional
 	public void SnsUpdate(int id, Sns requestSns) {
-		Sns updateSns = sr.findById(id).orElseThrow(()->{
+		Sns updateSns = snsRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("글수정하기 실패 : 해당 아이디를 찾을수 없습니다");
 		});
 		updateSns.setTitle(requestSns.getTitle());

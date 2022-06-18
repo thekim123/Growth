@@ -39,7 +39,6 @@ public class Sns {
 	@Column(nullable = false, length = 100)
 	public String title;
 
-	@Lob
 	public String content;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -49,8 +48,8 @@ public class Sns {
 	@CreationTimestamp
 	public Timestamp createTime;
 	
-	@JsonIgnoreProperties({"snsId"})
-	@OneToMany(mappedBy = "snsId", fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"sns"})
+	@OneToMany(mappedBy = "sns", fetch = FetchType.EAGER)
 	public List<Reply> replys;
 
 	/////////////////////////////////////////////////////////////////

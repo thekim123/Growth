@@ -26,29 +26,29 @@ import com.growth.cafe.web.dto.ResponseDto;
 public class SnsApiController {
 	
 	@Autowired
-	private SnsService ss;
+	private SnsService snsService;
 	
 	@GetMapping({"/api/sns"})
-	public ResponseEntity<?> snsLoad(Model model, @PageableDefault(size=5, sort = "id") Pageable p) {
-		Page<Sns> snsList = ss.SnsSelect(p);
+	public ResponseEntity<?> snsLoad(Model model, @PageableDefault(size=5, sort = "id") Pageable pageable) {
+		Page<Sns> snsList = snsService.SnsSelect(pageable);
 		return new ResponseEntity<>(new CMRespDto<>(1, "성공", snsList), HttpStatus.OK);
 	}
 
 	@PostMapping("/api/snsWrite")
 	public ResponseDto<Integer> snsWrite(@RequestBody Sns s, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		ss.SnsWrite(s, principalDetails.getMember());
+		snsService.SnsWrite(s, principalDetails.getMember());
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	@DeleteMapping("/api/snsDelete/{id}") // api/snsDelete
 	public ResponseDto<Integer> snsDelete(@PathVariable int id){
-		ss.SnsDelete(id);
+		snsService.SnsDelete(id);
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
 	@PutMapping("/api/snsUpdate/{id}")
 	public ResponseDto<Integer> snsUpdate(@PathVariable int id, @RequestBody Sns s){
-		ss.SnsUpdate(id,s);
+		snsService.SnsUpdate(id,s);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	

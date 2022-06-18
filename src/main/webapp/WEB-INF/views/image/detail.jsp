@@ -9,7 +9,7 @@
 	</c:if>
 	<br /> <br />
 	<div class="item__img">
-		<span id="imageId" style="display: none;"><i> ${image.id } </i></span> <span id="memberProfileImage"> <img class="profile-image" src="/upload/${principal.member.profileImageUrl}"
+		<span style="display: none;"><i> ${image.id } </i></span> <span id="memberProfileImage"> <img class="profile-image" src="/upload/${principal.member.profileImageUrl}"
 			onerror="this.src='/images/person.jpeg'" /></span> <span id="username"><i> ${image.member.username } </i></span>
 	</div>
 	<br />
@@ -28,7 +28,7 @@
 
 	<div class="card">
 		<form>
-			<input type="hidden" id="memberId" value="${principal.member.id }" /> <input type="hidden" id="imageId" value="${image.id }" />
+			<input type="hidden" id="imageId" value="${image.id }" />
 			<div class="card-body">
 				<textarea id="reply-content" class="form-control" rows="1"></textarea>
 			</div>
