@@ -33,17 +33,9 @@ public class SnsService {
 		Page<Sns> snses = snsRepository.findAll(pageable);
 		return snses;
 	}
-	
-	@Transactional(readOnly = true)
-	public Sns SnsDetail(int id) {
-		return snsRepository.findById(id).orElseThrow(()->{
-			return new IllegalArgumentException("글상세보기 실패 : 아이디를 찾을수 없습니다");
-		});
 		
-	}
 	@Transactional
 	public void SnsDelete(int id) {
-		
 		snsRepository.deleteById(id);
 	}
 	@Transactional

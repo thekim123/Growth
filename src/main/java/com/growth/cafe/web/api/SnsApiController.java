@@ -29,7 +29,7 @@ public class SnsApiController {
 	private SnsService snsService;
 	
 	@GetMapping({"/api/sns"})
-	public ResponseEntity<?> snsLoad(Model model, @PageableDefault(size=5, sort = "id") Pageable pageable) {
+	public ResponseEntity<?> snsLoad(Model model, @PageableDefault(size=3, sort = "id") Pageable pageable) {
 		Page<Sns> snsList = snsService.SnsSelect(pageable);
 		return new ResponseEntity<>(new CMRespDto<>(1, "성공", snsList), HttpStatus.OK);
 	}

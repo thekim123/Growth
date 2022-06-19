@@ -30,24 +30,23 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class ReplyApiController {
 	
-	private final ReplyService rs;
+	private final ReplyService replyService;
 	private final ImageReplyService imageReplyService;
 	private final FileReplyService fileReplyService;
 
-	@PostMapping(value = "/api/replyWrite", consumes = org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/api/sns/reply", consumes = org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<?> snsReplyWrite(@Valid @RequestBody SnsReplyDto replyDto, 
 			BindingResult bindingResult, 
 			@AuthenticationPrincipal PrincipalDetails principalDetails){
 		Reply reply = 
-				rs.replyWrite(replyDto.getContent(), replyDto.getSnsId(), principalDetails.getMember().getId());
-		
+				replyService.replyWrite(replyDto.getContent(), replyDto.getSnsId(), principalDetails.getMember().getId());
 		return new ResponseEntity<>(new CMRespDto<>(1, "댓글쓰기 성공", reply), HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/api/sns/reply")
-	public ResponseEntity<?> snsReply(@RequestBody SnsReplyDto replyDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
-		Reply reply = rs.replyWrite(replyDto.getContent(), replyDto.getSnsId(), principalDetails.getMember().getId());
-		return new ResponseEntity<>(new CMRespDto<>(1, "댓글쓰기 성공", reply),HttpStatus.CREATED);
+	@DeleteMapping("/api/sns/reply/{id}")
+	public ResponseEntity<?> snsReplyDelete(@PathVariable int id){
+		replyService.delete(id);
+		return new ResponseEntity<>(new CMRespDto<>(1, "댓글 삭제 완료",null), HttpStatus.OK);
 	}
 	
 	@PostMapping("/api/img/reply")

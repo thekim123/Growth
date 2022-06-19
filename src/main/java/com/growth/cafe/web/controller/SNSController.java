@@ -12,14 +12,10 @@ import com.growth.cafe.service.SnsService;
 
 @Controller
 public class SNSController {
-	
-	@Autowired
-	private SnsService ss;
-	
 
-	@GetMapping({"/", "/sns/story"})
+	@GetMapping({"/", "/sns"})
 	public String story() {
-		return "sns/story";
+		return "sns/sns";
 	}
 	
 	@GetMapping("/snswrite")
@@ -27,21 +23,6 @@ public class SNSController {
 		
 		
 		return "sns/SnsWrite";
-	}
-	@GetMapping("/sns/{id}")
-	public String snsWrite(@PathVariable int id, Model model) {
-		
-		model.addAttribute("snsDetail", ss.SnsDetail(id));
-		
-		
-		
-		return "sns/SnsDetail";
-	}
-	@GetMapping("/snsUpdate/{id}")
-	public String snsUpdate(@PathVariable int id, Model model) {
-		model.addAttribute("snsUpdate", ss.SnsDetail(id));
-		
-		return "sns/SnsUpdate";
 	}
 	
 }

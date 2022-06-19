@@ -41,5 +41,9 @@ public class ReplyService {
 		return replyRepository.save(reply);
 	}
 
+	@Transactional
+	public void delete(int id) {
+		replyRepository.deleteById(id);
+	}
 	
 }

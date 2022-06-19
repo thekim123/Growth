@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#btn-sns-write {
+	top: 95%;
+	right: 3%;
+	position: fixed;
+}
+
+#sns-write {
+	margin: 5px;
+	width: 300px;
+	height: 250px;
+	top: 70%;
+	right: 3%;
+	display: none;
+	position: fixed;
+}
+
+#sns-write-btn{
+}
+
+#sns-write-content{
+	width: 280px;
+	height: 160px;
+}
+
+#sns-write-title{
+	width: 280px;
+	height: 30px;
+}

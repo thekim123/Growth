@@ -8,8 +8,12 @@
 
 	<ul class="pagination justify-content-center">
 		
-		<li class="page-item"><a class="page-link" href="/snswrite">글쓰기</a></li>
-		
+		<div id="sns-write" >
+			<input id="sns-write-title"/>
+			<textarea id="sns-write-content" rows="5" cols="" placeholder="내용을 입력하세요."></textarea>
+			<button id="sns-write-btn" type="button" onClick="snsWrite();">글쓰기</button>		
+		</div>
+		<li class="page-item"><button type="button" id="btn-sns-write" onClick="snsWriteButton();">▲</button></li>
 	</ul>
 	
 	 

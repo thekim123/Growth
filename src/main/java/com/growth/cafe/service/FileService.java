@@ -30,12 +30,12 @@ import com.growth.cafe.web.api.FileApiController;
 @Service
 public class FileService {
 
-//	@Value("${spring.servlet.multipart.location}") // multipart에 location으로 설정한 폴더
-	@Value("${file.path}") // -> yml파일에 file/path:로 설정한 폴더
+	@Value("${spring.servlet.multipart.location}") // multipart에 location으로 설정한 폴더
+//@Value("${file.path}") // -> yml파일에 file/path:로 설정한 폴더
 	private String filePath;
 
 	private Path getFileName(String filename) {
-		return Paths.get(filePath).resolve(filename);
+		return Paths.get(filePath+"/video").resolve(filename);
 	}
 
 //	private Date getFileTime(String filename) {

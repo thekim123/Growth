@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="/css/upload.css">
 <link rel="stylesheet" href="/css/signin.css">
 <link rel="stylesheet" href="/css/detail.css">
+<link rel="stylesheet" href="/css/sns.css">
 </head>
 <body>
 

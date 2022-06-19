@@ -45,7 +45,7 @@
 			<c:forEach var="reply" items="${image.replies }">
 				<li id="reply-${reply.id }" class="list-group-item d-flex justify-content-between">
 					<div>${reply.content }</div>
-					<div class="d-flex">
+					<div class="d-flex justify-content-right">
 						<div class="font-italic">작성자 : ${reply.member.username } &nbsp;</div>
 						<button id="btn-reply-delete" onclick="replyDelete(${image.id},${reply.id })" class="badge">삭제</button>
 					</div>

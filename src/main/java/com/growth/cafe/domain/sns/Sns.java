@@ -3,6 +3,7 @@ package com.growth.cafe.domain.sns;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -49,7 +51,8 @@ public class Sns {
 	public Timestamp createTime;
 	
 	@JsonIgnoreProperties({"sns"})
-	@OneToMany(mappedBy = "sns", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "sns", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@OrderBy("id desc")
 	public List<Reply> replys;
 
 	/////////////////////////////////////////////////////////////////
